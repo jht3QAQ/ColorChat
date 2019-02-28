@@ -1,0 +1,15 @@
+[
+{
+  "modid": "colorchat",
+  "name": "ColorChat",
+  "description": "让聊天自动添加彩色符号.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/jht3QAQ/ColorChat",
+  "updateUrl": "",
+  "authorList": ["jht3"],
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
