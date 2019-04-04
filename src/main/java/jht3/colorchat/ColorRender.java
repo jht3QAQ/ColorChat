@@ -28,7 +28,7 @@ public class ColorRender {
 			"&4","&c","&6","&e","&2","&a","&b","&3",
 			"&1","&9","&d","&5","&f","&7","&8","&0"
 			};
-	public static boolean english=true;
+	public static boolean english=false;
 	//private static Mode englishMode=Mode.RANDOM;
 	
 	private static String[] mathColorList=new String[]{
@@ -42,7 +42,7 @@ public class ColorRender {
 		Mode temp=mainMode;
 		String rawString=s;
 		if(!isUseColorChat) return s;
-		if(s.length()>=100) return s;
+		//if(s.length()>=100) return s;
 		StringBuilder sb=new StringBuilder();
 		int i=0;
 		
@@ -50,7 +50,7 @@ public class ColorRender {
 		else if(mainMode==Mode.SINGLE) s=singleColor(rawString,sb,i);
 		else if(mainMode==Mode.NONE) s=noneColor(rawString, sb, i);
 		
-		if(s.length()>100&&mainMode==Mode.RANDOM){
+		/*if(s.length()>100&&mainMode==Mode.RANDOM){
 			mainMode=Mode.SINGLE;
 			sb=new StringBuilder();
 			i=0;
@@ -63,7 +63,7 @@ public class ColorRender {
 			s=noneColor(rawString, sb, i);
 		}
 		if(s.length()>100&&mainMode==Mode.NONE)
-			return rawString;
+			return rawString;*/
 		mainMode=temp;
 		return s;
 	}
@@ -265,7 +265,7 @@ public class ColorRender {
 		return true;
 	}
 	
-	private static String returnToMain(String s,StringBuilder sb,int i){
+	private final static String returnToMain(String s,StringBuilder sb,int i){
 		if(mainMode==Mode.RANDOM) return randomColor(s, sb, i);
 		else if(mainMode==Mode.SINGLE) return singleColor(s,sb,i);
 		else if(mainMode==Mode.NONE)return noneColor(s,sb,i);

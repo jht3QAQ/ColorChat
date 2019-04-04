@@ -4,12 +4,103 @@ import java.io.File;
 
 import org.apache.logging.log4j.Logger;
 
-import com.typesafe.config.Config;
-
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+/*
+@Config(modid = "colorchat",name="colorchat")
+public class ConfigLoader {
+	@Config.Comment("是否使用ASM加载mod")
+	@Config.RequiresMcRestart
+    public static boolean isUseASM=false;
+	
+	@Config.Comment("是否启用ColorChat")
+	public static boolean isUseColorChat=true;
+	
+	@Config.Comment("ColorChat模式 ")
+	public static ColorRender.Mode mode=ColorRender.Mode.RANDOM;
+    
+    @Config.Comment("是否启用at识别功能")
+    public static boolean isUseAtColor=true;
+    
+    @Config.Comment("是否启用数字识别功能")
+    public static boolean isUseMathColor=true;
+    
+    @Config.Comment("是否启用英语识别功能")
+    public static boolean isUseEnglishColor=true;
+    
+    @Config.Comment("设置主要颜色\n依次为:\n深蓝&1   深绿&2  青色&3  深红&4  紫色&5  深黄&6  灰色&7  黑色&0\n浅蓝&9  浅绿&a  天蓝&b  浅红&c  粉色&d  浅黄&e  白色&f  灰黑&8")
+    public static boolean[] mainColor=new boolean[]{false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true};
+    
+    @Config.Comment("设置at颜色")
+    public static boolean[] atColor=new boolean[]{false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true};
+    
+    @Config.Comment("设置数字颜色")
+    public static boolean[] englishColor=new boolean[]{false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true};
+    
+    @Config.Comment("设置英文颜色")
+    public static boolean[] mathColor=new boolean[]{false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true};
+    
+	public static void setConfig(){
+		ColorRender.isUseColorChat=ConfigLoader.isUseColorChat;
+		ColorRender.mainMode=mode;
+		ColorRender.at=isUseAtColor;
+		ColorRender.english=isUseEnglishColor;
+		ColorRender.math=isUseMathColor;
+		
+		ColorRender.setColorList(mainColor, ColorRender.color.mainColor);
+		ColorRender.setColorList(atColor, ColorRender.color.atColor);
+		ColorRender.setColorList(mathColor, ColorRender.color.mathColor);
+		ColorRender.setColorList(englishColor, ColorRender.color.englishColor);
+		
+		ColorChat.isUseASM=isUseASM;
+	}
+	
+	public static void setIsUseColorChat(Boolean b){
+		ConfigLoader.isUseColorChat=b;
+		ColorRender.isUseColorChat=ConfigLoader.isUseColorChat;
+		}
+	public static void setMode(ColorRender.Mode mode){
+		ColorRender.mainMode=mode;
+		ConfigLoader.mode=mode;
+	}
+	public static void setIsUseEnglishColor(Boolean b){
+		ConfigLoader.isUseEnglishColor=b;
+		ColorRender.english=b;
+	}
+	public static void setIsUseMathColor(Boolean b){
+		ConfigLoader.isUseMathColor=b;
+		ColorRender.math=b;
+	}
+	public static void setIsUseAtColor(Boolean b){
+		ConfigLoader.isUseAtColor=b;
+		ColorRender.at=b;
+	}
+	public static void setIsASM(Boolean b){
+		ConfigLoader.isUseASM=b;
+		ColorChat.isUseASM=isUseASM;
+	}
+	public static void setColorList(ColorRender.color color,boolean[] b){
+		if(color==ColorRender.color.atColor) ConfigLoader.atColor=b;
+		if(color==ColorRender.color.englishColor) ConfigLoader.englishColor=b;
+		if(color==ColorRender.color.mainColor) ConfigLoader.mainColor=b;
+		if(color==ColorRender.color.mathColor) ConfigLoader.mathColor=b;
+		ColorRender.setColorList(b, color);
+	}
+	
+	public static boolean[] getColorList(ColorRender.color color){
+		if(color==ColorRender.color.atColor) return ConfigLoader.atColor;
+		if(color==ColorRender.color.englishColor) return ConfigLoader.englishColor;
+		if(color==ColorRender.color.mainColor) return ConfigLoader.mainColor;
+		if(color==ColorRender.color.mathColor) return ConfigLoader.mathColor;
+		return null;
+	}
+}
+*/
 public class ConfigLoader {
 	private static final String sisUseAtColor="是否启用at识别功能";
 	private static final String sisUseASM="是否使用ASM加载mod";
