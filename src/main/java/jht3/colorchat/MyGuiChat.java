@@ -50,14 +50,14 @@ public class MyGuiChat extends GuiScreen{
     {
     	drawBackground(0);
         this.list.drawScreen(par1, par2, par3);
-    	this.drawCenteredString(this.fontRenderer, "ColorChat设置", this.width/2, 5 , 16777215);
+    	this.drawCenteredString(this.fontRenderer, I18n.format("colorchat.gui.colorchatsettig"), this.width/2, 5 , 16777215);
         super.drawScreen(par1,par2,par3);
     }
 	
     @Override
     public void onGuiClosed(){
-    	ConfigLoader.saveConfig();
-    }
+    	ConfigLoader.saveConfig(); 
+    } 
     
     @Override
     protected void actionPerformed(GuiButton button) throws IOException
@@ -125,39 +125,39 @@ public class MyGuiChat extends GuiScreen{
 		public GuiOptopnsMyGuiChatList(Minecraft mcIn, int widthIn, int heightIn, int topIn, int bottomIn,
 				int slotHeightIn) {
 			super(mcIn, widthIn, heightIn, topIn, bottomIn, slotHeightIn); 
-			colorChatOn=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, "ColorChat总开关:关闭"){ 
+			colorChatOn=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, I18n.format("colorchat.gui.colorchatswitch.off")){ 
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
 			    {
 					if(this.isMouseOver()){
 						ConfigLoader.setIsUseColorChat(!ColorRender.isUseColorChat);
-						if(ColorRender.isUseColorChat)colorChatOn.displayString="ColorChat总开关:开启";
-						else colorChatOn.displayString="ColorChat总开关:关闭";
+						if(ColorRender.isUseColorChat)colorChatOn.displayString=I18n.format("colorchat.gui.colorchatswitch.on");
+						else colorChatOn.displayString=I18n.format("colorchat.gui.colorchatswitch.off");
 						return true;
 			    	}
 			        return false;    
 			    }   
 			};
-			if(ColorRender.isUseColorChat)colorChatOn.displayString="ColorChat总开关:开启";
-			colorChatMode=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, "ColorChat模式:关闭"){
+			if(ColorRender.isUseColorChat)colorChatOn.displayString=I18n.format("colorchat.gui.colorchatswitch.on");
+			colorChatMode=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20,I18n.format("colorchat.gui.colorchatmode.off")){
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
 			    {
 					ColorRender.Mode mode = ColorRender.Mode.NONE;
 					if(this.isMouseOver()){
-						if(ColorRender.mainMode==ColorRender.Mode.NONE) {mode=ColorRender.Mode.RANDOM;this.displayString="ColorChat模式:随机模式";}
-						if(ColorRender.mainMode==ColorRender.Mode.RANDOM) {mode=ColorRender.Mode.SINGLE;this.displayString="ColorChat模式:单色模式";}
-						if(ColorRender.mainMode==ColorRender.Mode.SINGLE) {mode=ColorRender.Mode.NONE;this.displayString="ColorChat模式:关闭";}
+						if(ColorRender.mainMode==ColorRender.Mode.NONE) {mode=ColorRender.Mode.RANDOM;this.displayString=I18n.format("colorchat.gui.colorchatmode.randomcolor");}
+						if(ColorRender.mainMode==ColorRender.Mode.RANDOM) {mode=ColorRender.Mode.SINGLE;this.displayString=I18n.format("colorchat.gui.colorchatmode.singlecolor");}
+						if(ColorRender.mainMode==ColorRender.Mode.SINGLE) {mode=ColorRender.Mode.NONE;this.displayString=I18n.format("colorchat.gui.colorchatmode.off");}
 						ConfigLoader.setMode(mode);
 						return true;
 			    	}
 			        return false;    
 			    }   
 			};
-			if(ColorRender.mainMode==ColorRender.Mode.NONE) colorChatMode.displayString="ColorChat模式:关闭";
-			if(ColorRender.mainMode==ColorRender.Mode.RANDOM) colorChatMode.displayString="ColorChat模式:随机模式";
-			if(ColorRender.mainMode==ColorRender.Mode.SINGLE) colorChatMode.displayString="ColorChat模式:单色模式";
-			colorSet=new GuiButton(slotHeightIn,widthIn/2-155+160,0,150,20,"ColorChat颜色设置"){
+			if(ColorRender.mainMode==ColorRender.Mode.NONE) colorChatMode.displayString=I18n.format("colorchat.gui.colorchatmode.off");
+			if(ColorRender.mainMode==ColorRender.Mode.RANDOM) colorChatMode.displayString=I18n.format("colorchat.gui.colorchatmode.randomcolor");
+			if(ColorRender.mainMode==ColorRender.Mode.SINGLE) colorChatMode.displayString=I18n.format("colorchat.gui.colorchatmode.singlecolor");
+			colorSet=new GuiButton(slotHeightIn,widthIn/2-155+160,0,150,20,I18n.format("colorchat.gui.colorsetting")){
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) 
 			    {
@@ -172,21 +172,21 @@ public class MyGuiChat extends GuiScreen{
 			this.entry.add(new GuiOptionsRowList.Row(colorChatOn, null));
 			this.entry.add(new GuiOptionsRowList.Row(colorChatMode, colorSet));
 			
-			atOn=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, "AT识别:开启"){ 
+			atOn=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, I18n.format("colorchat.gui.atsetting.on")){ 
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) 
 			    {
 					if(this.isMouseOver()){
 						ConfigLoader.setIsUseAtColor(!ColorRender.at);
-						if(ColorRender.at)atOn.displayString="AT识别:开启";
-						else atOn.displayString="AT识别:关闭";
+						if(ColorRender.at)atOn.displayString=I18n.format("colorchat.gui.atsetting.on");
+						else atOn.displayString=I18n.format("colorchat.gui.atsetting.off");
 						return true;
 			    	}
 			        return false;    
 			    }   
 			}; 
-			if(!ColorRender.at) atOn.displayString="AT识别:关闭";
-			atSet=new GuiButton(slotHeightIn,widthIn/2 -155 +160 ,0,150,20,"AT设置"){
+			if(!ColorRender.at) atOn.displayString=I18n.format("colorchat.gui.atsetting.off");
+			atSet=new GuiButton(slotHeightIn,widthIn/2 -155 +160 ,0,150,20,I18n.format("colorchat.gui.atsetting")){
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) 
 			    {
@@ -198,21 +198,21 @@ public class MyGuiChat extends GuiScreen{
 			    }   
 			}; 
 			this.entry.add(new GuiOptionsRowList.Row(atOn, atSet));
-			englishOn=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, "英文识别:开启"){ 
+			englishOn=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, I18n.format("colorchat.gui.englishsetting.on")){ 
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) 
 			    {
 					if(this.isMouseOver()){
 						ConfigLoader.setIsUseEnglishColor(!ColorRender.english);
-						if(ColorRender.english)englishOn.displayString="英文识别:开启";
-						else englishOn.displayString="英文识别:关闭";
+						if(ColorRender.english)englishOn.displayString=I18n.format("colorchat.gui.englishsetting.on");
+						else englishOn.displayString=I18n.format("colorchat.gui.englishsetting.off");
 						return true;
 			    	}
 			        return false;    
 			    }   
 			}; 
-			if(!ColorRender.english) englishOn.displayString="英文识别:关闭";
-			englishSet=new GuiButton(slotHeightIn,widthIn/2 -155 +160 ,0,150,20,"英文设置"){
+			if(!ColorRender.english) englishOn.displayString=I18n.format("colorchat.gui.englishsetting.off");
+			englishSet=new GuiButton(slotHeightIn,widthIn/2 -155 +160 ,0,150,20,I18n.format("colorchat.gui.englishsetting")){
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) 
 			    {
@@ -224,21 +224,21 @@ public class MyGuiChat extends GuiScreen{
 			    }   
 			}; 
 			this.entry.add(new GuiOptionsRowList.Row(englishOn, englishSet));
-			mathOn=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, "数字识别:开启"){ 
+			mathOn=new GuiButton(slotHeightIn, widthIn / 2 - 155, 0,150,20, I18n.format("colorchat.gui.mathsetting.on")){ 
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) 
 			    {
 					if(this.isMouseOver()){
 						ConfigLoader.setIsUseMathColor(!ColorRender.math);
-						if(ColorRender.math)mathOn.displayString="数字识别:开启";
-						else mathOn.displayString="数字识别:关闭";
+						if(ColorRender.math)mathOn.displayString=I18n.format("colorchat.gui.mathsetting.on");
+						else mathOn.displayString=I18n.format("colorchat.gui.mathsetting.off");
 						return true;
 			    	}
 			        return false;    
 			    }    
 			}; 
-			if(!ColorRender.math) mathOn.displayString="数字识别:关闭";
-			mathSet=new GuiButton(slotHeightIn,widthIn/2 -155 +160 ,0,150,20,"数字设置"){
+			if(!ColorRender.math) mathOn.displayString=I18n.format("colorchat.gui.mathsetting.off");
+			mathSet=new GuiButton(slotHeightIn,widthIn/2 -155 +160 ,0,150,20,I18n.format("colorchat.gui.mathsetting")){
 				@Override
 				public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) 
 			    {
@@ -308,7 +308,14 @@ public class MyGuiChat extends GuiScreen{
 		ColorRender.color color;
 		GuiScreen parentGuiScreen;
 		boolean[] b;
-		String[] colorName=new String[]{"深蓝&1","深绿&2","青色&3","深红&4","紫色&5","深黄&6","灰色&7","黑色&0","浅蓝&9","浅绿&a","天蓝&b","浅红&c","粉色&d","浅黄&e","白色&f","灰黑&8"};
+		String[] colorName=new String[]{I18n.format("colorchat.gui.color.darkblue")+"&1",I18n.format("colorchat.gui.color.darkgreen")+"&2",
+				I18n.format("colorchat.gui.color.cyan")+"&3",I18n.format("colorchat.gui.color.crimson")+"&4",
+				I18n.format("colorchat.gui.color.violet")+"&5",I18n.format("colorchat.gui.color.deepyellow")+"&6",
+				I18n.format("colorchat.gui.color.gray")+"&7",I18n.format("colorchat.gui.color.black")+"&0",
+				I18n.format("colorchat.gui.color.lightblue")+"&9",I18n.format("colorchat.gui.color.lightgreen")+"&a",
+				I18n.format("colorchat.gui.color.skyblue")+"&b",I18n.format("colorchat.gui.color.palered")+"&c",
+				I18n.format("colorchat.gui.color.pink")+"&d",I18n.format("colorchat.gui.color.lightyellow")+"&e",
+				I18n.format("colorchat.gui.color.white")+"&f",I18n.format("colorchat.gui.color.darkgray")+"&8"};
 		int[] colorRGB=new int[]{0x0000BE,0x00BE00,0x00BEBE,0xBE0000,0xBE00BE,0xD8A232,0xBEBEBE,0x000000,0x3F3FFF,0x3EFE3E,0x40FDFD,0xFF3F3F,0xFF3FFF,0xFFFF3F,0xFFFFFF,0x3F3F3F};
 		GuiButton exit;
 		GuiButton[] colorList;
@@ -356,10 +363,10 @@ public class MyGuiChat extends GuiScreen{
 	    public void drawScreen(int par1, int par2, float par3) 
 	    {
 	    	drawBackground(0);
-	    	if(color==ColorRender.color.mainColor)this.drawCenteredString(this.fontRenderer, "ColorChat颜色设置", this.width/2, 5 , 16777215);
-	    	if(color==ColorRender.color.atColor)this.drawCenteredString(this.fontRenderer, "AT颜色设置", this.width/2, 5 , 16777215);
-	    	if(color==ColorRender.color.mathColor)this.drawCenteredString(this.fontRenderer, "数字颜色设置", this.width/2, 5 , 16777215);
-	    	if(color==ColorRender.color.englishColor)this.drawCenteredString(this.fontRenderer, "英文颜色设置", this.width/2, 5 , 16777215);
+	    	if(color==ColorRender.color.mainColor)this.drawCenteredString(this.fontRenderer, I18n.format("colorchat.gui.colorsetting"), this.width/2, 5 , 16777215);
+	    	if(color==ColorRender.color.atColor)this.drawCenteredString(this.fontRenderer, I18n.format("colorchat.gui.atsetting"), this.width/2, 5 , 16777215);
+	    	if(color==ColorRender.color.mathColor)this.drawCenteredString(this.fontRenderer, I18n.format("colorchat.gui.mathsetting"), this.width/2, 5 , 16777215);
+	    	if(color==ColorRender.color.englishColor)this.drawCenteredString(this.fontRenderer, I18n.format("colorchat.gui.englishsetting"), this.width/2, 5 , 16777215);
 	        super.drawScreen(par1,par2,par3);
 	        
 	    }

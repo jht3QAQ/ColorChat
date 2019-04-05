@@ -102,16 +102,16 @@ public class ConfigLoader {
 }
 */
 public class ConfigLoader {
-	private static final String sisUseAtColor="是否启用at识别功能";
-	private static final String sisUseASM="是否使用ASM加载mod";
-	private static final String sisUseColorChat="是否启用ColorChat";
-	private static final String smainMode="ColorChat模式 (0为不启用,1为混彩模式,2为单色模式)";
-	private static final String sisUseMathColor="是否启用数字识别功能";
-	private static final String sisUseEnglishColor="是否启用英语识别功能";
-	private static final String smainColor="设置主要颜色\n依次为:\n深蓝&1   深绿&2  青色&3  深红&4  紫色&5  深黄&6  灰色&7  黑色&0\n浅蓝&9  浅绿&a  天蓝&b  浅红&c  粉色&d  浅黄&e  白色&f  灰黑&8";
-	private static final String satColor="设置at颜色";
-	private static final String smathColor="设置数字颜色";
-	private static final String senglishColor="设置英文颜色";
+	private static final String sisUseAtColor="是否启用at识别功能\nWhether to Enable at Recognition Function";
+	private static final String sisUseASM="是否使用ASM加载mod\nWhether to load mod using ASM";
+	private static final String sisUseColorChat="是否启用ColorChat\nWhether ColorChat is enabled";
+	private static final String smainMode="ColorChat模式 (0为不启用,1为混彩模式,2为单色模式)\nColorChat mode (0 is not enabled, 1 is mixed color mode, 2 is monochrome mode)";
+	private static final String sisUseMathColor="是否启用数字识别功能\nWhether to Enable Digital Recognition Function";
+	private static final String sisUseEnglishColor="是否启用英语识别功能\nWhether to Enable English Recognition Function";
+	private static final String smainColor="设置主要颜色\n依次为:\n深蓝&1   深绿&2  青色&3  深红&4  紫色&5  深黄&6  灰色&7  黑色&0\n浅蓝&9  浅绿&a  天蓝&b  浅红&c  粉色&d  浅黄&e  白色&f  灰黑&8\nSetting the main color\nFollowed by:\nDark Blue&1 Dark Green&2 Blue&3 Dark Red&4 Purple&5 Dark Yellow&6 Grey&7 Black&0\nLight blue&9 light green&a sky blue&B light red&c pink&d light yellow&e white&f grey black&8";
+	private static final String satColor="设置at颜色\nSetting at color";
+	private static final String smathColor="设置数字颜色\nSetting Digital Colors";
+	private static final String senglishColor="设置英文颜色\nSetting English Colors";
 
     private static Configuration config;
     private static boolean isUseASM;

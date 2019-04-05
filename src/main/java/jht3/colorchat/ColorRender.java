@@ -42,7 +42,7 @@ public class ColorRender {
 		Mode temp=mainMode;
 		String rawString=s;
 		if(!isUseColorChat) return s;
-		//if(s.length()>=100) return s;
+		if(s.length()>=100) return s;
 		StringBuilder sb=new StringBuilder();
 		int i=0;
 		
@@ -50,7 +50,7 @@ public class ColorRender {
 		else if(mainMode==Mode.SINGLE) s=singleColor(rawString,sb,i);
 		else if(mainMode==Mode.NONE) s=noneColor(rawString, sb, i);
 		
-		/*if(s.length()>100&&mainMode==Mode.RANDOM){
+		if(s.length()>100&&mainMode==Mode.RANDOM){
 			mainMode=Mode.SINGLE;
 			sb=new StringBuilder();
 			i=0;
@@ -63,7 +63,7 @@ public class ColorRender {
 			s=noneColor(rawString, sb, i);
 		}
 		if(s.length()>100&&mainMode==Mode.NONE)
-			return rawString;*/
+			return rawString;
 		mainMode=temp;
 		return s;
 	}
