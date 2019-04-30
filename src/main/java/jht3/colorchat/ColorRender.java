@@ -41,6 +41,7 @@ public class ColorRender {
 	public static String toColor(String s){
 		Mode temp=mainMode;
 		String rawString=s;
+		if(s.startsWith("/")) return s;
 		if(!isUseColorChat) return s;
 		if(s.length()>=100) return s;
 		StringBuilder sb=new StringBuilder();
